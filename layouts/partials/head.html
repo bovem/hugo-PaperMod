@@ -198,8 +198,8 @@
 
 {{- /* Misc */}}
 {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
-{{- template "templates/umami.html" . }}
-{{- template "templates/opengraph.html" . }}
-{{- template "templates/twitter_cards.html" . }}
-{{- template "templates/schema_json.html" . }}
+{{- partial "templates/umami.html" . }}
+{{- partial "templates/opengraph.html" . }}
+{{- partial "templates/twitter_cards.html" . }}
+{{- partial "templates/schema_json.html" . }}
 {{- end -}}
