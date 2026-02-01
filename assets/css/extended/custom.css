@@ -1,5 +1,5 @@
 /* Darker dark theme */
-.dark {
+:root[data-theme="dark"] {
     --theme: rgb(10, 10, 12);
     --entry: rgb(18, 18, 20);
     --primary: rgb(230, 230, 231);
