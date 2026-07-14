@@ -1,0 +1,21 @@
+/* === Reading comfort ===
+ *
+ * --main-width: 800px
+ *   At 18px IBM Plex Sans (~9px avg char): ~88 chars/line.
+ *   Slightly over the 75-char ideal but gives the wider visual feel
+ *   the design calls for. Post-content prose is scoped tighter via
+ *   line-height and font-size working together.
+ */
+:root {
+    --main-width: 800px;
+}
+
+/* 1.6× line height on all body text, not just post content */
+body {
+    line-height: 1.6;
+}
+
+/* Lock post body to the same — overrides any theme resets */
+.post-content {
+    line-height: 1.6;
+}

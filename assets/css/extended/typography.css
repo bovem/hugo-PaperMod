@@ -1,0 +1,38 @@
+body {
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 18px;
+}
+
+.post-content code,
+.post-content pre code {
+    font-family: 'IBM Plex Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+}
+
+.post-title {
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    font-weight: 700;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+    letter-spacing: -0.02em;
+}
+
+.post-content h4 {
+    font-size: 20px;
+}
+
+.post-content blockquote {
+    margin: 24px 0;
+    padding: 12px 20px;
+    border-inline-start: 4px solid var(--primary);
+    background: var(--entry);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-style: italic;
+    color: var(--secondary);
+}

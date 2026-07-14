@@ -1,0 +1,102 @@
+.index-tree,
+.index-tree ul {
+    list-style: none;
+    padding-inline-start: 0;
+}
+
+.index-tree ul {
+    padding-inline-start: 1.25rem;
+}
+
+.index-tree details > summary {
+    cursor: pointer;
+    list-style: none;
+}
+.index-tree details > summary::-webkit-details-marker {
+    display: none;
+}
+
+.index-tree details > summary::before {
+    content: '▶';
+    font-size: 0.55em;
+    color: var(--secondary);
+    margin-inline-end: 6px;
+    display: inline-block;
+    transition: transform 0.15s ease;
+    vertical-align: middle;
+}
+
+.index-tree details[open] > summary::before {
+    transform: rotate(90deg);
+}
+
+li.index-level-1 {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+}
+
+li.index-level-1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+li.index-level-1 > details > summary > a {
+    font-size: 1.15em;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+li.index-level-2 {
+    margin-top: 0.75rem;
+}
+
+li.index-level-2 > details > summary > a {
+    font-size: 1.0em;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+li.index-level-3 > details > summary > a {
+    font-size: 0.95em;
+    font-weight: 500;
+    color: var(--content);
+}
+
+.index-post > a {
+    font-weight: 400;
+    font-size: 0.95em;
+    color: var(--content);
+}
+
+.index-count {
+    font-size: 0.75em;
+    color: var(--secondary);
+    font-weight: 400;
+    margin-inline-start: 6px;
+}
+
+/* Extend upstream hover with box-shadow — upstream already handles transform + border-color */
+.post-entry:hover,
+.post-entry:focus-within {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Upstream zeroed .home-info .entry-content margin, collapsing the gap
+   between the h1 and body text and between body text and social icons.
+   Restore using em so it scales with the element's own font-size. */
+.home-info .entry-content {
+    margin-block-start: 0.9em;
+    margin-block-end: 0.9em;
+}
+
+/* Paragraph spacing within the home info text block */
+.home-info .entry-content p {
+    margin-block-start: 0;
+    margin-block-end: 0.4em;
+}
+
+.home-info .entry-content p:last-child {
+    margin-block-end: 0;
+}
