@@ -1,0 +1,54 @@
+/* =============================================================
+   readability.css — project-level overrides
+   Overrides PaperMod core values without editing theme files.
+   Hugo merges all assets/css/extended/*.css from both project
+   and theme directories, so this file is always included.
+   ============================================================= */
+
+/* ---------------------------------------------------------
+   1 · Card description & metadata font size
+       Theme hardcodes .entry-content at 14px and
+       .entry-footer at 13px. Override with rem units so
+       these scale with the root font-size (currently 18px).
+   --------------------------------------------------------- */
+.entry-content {
+    font-size: 1rem;   /* matches body — was 14px */
+}
+
+.entry-footer {
+    font-size: 0.8rem; /* ~14.4px — readable but subordinate — was 13px */
+}
+
+/* ---------------------------------------------------------
+   3 · Card padding
+       Theme uses padding: var(--gap) = 24px on all sides.
+       Increase to ~32px using calc so it stays proportional
+       if --gap ever changes.
+   --------------------------------------------------------- */
+.post-entry {
+    padding-block:  calc(var(--gap) * 1.35);
+    padding-inline: calc(var(--gap) * 1.35);
+}
+
+/* ---------------------------------------------------------
+   4 · Background — softer dark gray (#121212–#1a1a1a range)
+       was #0d0d0d (too close to pure black)
+   5 · Text color — already #e8e8e8 / #f0f0f0 (off-white) ✓
+   --------------------------------------------------------- */
+:root[data-theme="dark"] {
+    --theme: #161616;   /* was #0d0d0d — mid-point of requested range */
+    --entry: #212121;   /* was #181818 — keeps card separation proportional */
+}
+
+/* ---------------------------------------------------------
+   6 · Line length
+       800px at 18px IBM Plex Sans ≈ 84 chars/line (over target).
+       700px ≈ 70 chars/line — within the 60–75 range.
+   7 · Contrast (verified, no code change needed)
+       #e8e8e8 on #161616 → 14.8:1  AAA ✓
+       #f0f0f0 on #161616 → 16.6:1  AAA ✓
+       #a8a8a8 on #161616 →  7.6:1  AAA ✓
+   --------------------------------------------------------- */
+:root {
+    --main-width: 700px;   /* was 800px */
+}
