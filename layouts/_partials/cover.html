@@ -1,7 +1,9 @@
 {{- with .cxt}} {{/* Apply proper context from dict */}}
 {{- if (and .Params.cover.image (not $.isHidden)) }}
 <figure class="entry-cover">
-    {{- $loading := cond $.IsSingle "eager" "lazy" }}
+    {{- $eager := or $.IsSingle ($.IsFirst | default false) }}
+    {{- $loading := cond $eager "eager" "lazy" }}
+    {{- $priority := cond $eager "high" "auto" }}
     {{- $addLink := (and site.Params.cover.linkFullImages $.IsSingle) }}
     {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
     {{- $alt := (.Params.cover.alt | default .Params.cover.caption | plainify) }}
@@ -31,7 +33,7 @@
     {{- if $cover -}}
         {{/* i.e it is present in page bundle */}}
         {{- if (and (in $processableFormats $cover.MediaType.SubType) ($responsiveImages) (eq $prod true)) }}
-            <img loading="{{$loading}}"
+            <img loading="{{$loading}}" fetchpriority="{{$priority}}"
                 srcset='{{- range $size := $sizes -}}
                             {{- if (ge $cover.Width $size) }}
                                 {{- printf "%s %s" (($cover.Resize (printf "%sx" $size)).Permalink) (printf "%sw," $size) }}
@@ -43,11 +45,11 @@
                 width="{{ $cover.Width }}" height="{{ $cover.Height }}"
                 alt="{{ $alt }}">
         {{- else }}{{/* Unprocessable image or responsive images disabled */}}
-            <img loading="{{ $loading }}" src="{{ $imgdl }}" alt="{{ $alt }}">
+            <img loading="{{ $loading }}" fetchpriority="{{ $priority }}" src="{{ $imgdl }}" alt="{{ $alt }}">
         {{- end }}
     {{- else }}
         {{- /* For absolute urls and external links, no img processing here */}}
-        <img loading="{{ $loading }}" src="{{ $imgdl }}" alt="{{ $alt }}">
+        <img loading="{{ $loading }}" fetchpriority="{{ $priority }}" src="{{ $imgdl }}" alt="{{ $alt }}">
     {{- end }}
 
     {{- if $addLink }}

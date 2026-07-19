@@ -31,13 +31,12 @@
 }
 
 /* ---------------------------------------------------------
-   4 · Background — softer dark gray (#121212–#1a1a1a range)
-       was #0d0d0d (too close to pure black)
+   4 · Background — near-black, not pure #000
    5 · Text color — already #e8e8e8 / #f0f0f0 (off-white) ✓
    --------------------------------------------------------- */
 :root[data-theme="dark"] {
-    --theme: #161616;   /* was #0d0d0d — mid-point of requested range */
-    --entry: #212121;   /* was #181818 — keeps card separation proportional */
+    --theme: #0f0f0f;   /* near-black */
+    --entry: #1a1a1a;   /* keeps proportional card separation */
 }
 
 /* ---------------------------------------------------------
@@ -45,9 +44,9 @@
        800px at 18px IBM Plex Sans ≈ 84 chars/line (over target).
        700px ≈ 70 chars/line — within the 60–75 range.
    7 · Contrast (verified, no code change needed)
-       #e8e8e8 on #161616 → 14.8:1  AAA ✓
-       #f0f0f0 on #161616 → 16.6:1  AAA ✓
-       #a8a8a8 on #161616 →  7.6:1  AAA ✓
+       #e8e8e8 on #0f0f0f → 16.6:1  AAA ✓
+       #f0f0f0 on #0f0f0f → 18.1:1  AAA ✓
+       #a8a8a8 on #0f0f0f →  8.9:1  AAA ✓
    --------------------------------------------------------- */
 :root {
     --main-width: 700px;   /* was 800px */

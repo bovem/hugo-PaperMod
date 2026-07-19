@@ -52,6 +52,11 @@
 {{- end }}
 
 {{- $term := .Data.Term }}
+{{- $firstCoverIndex := -1 }}
+{{- range $i, $p := $paginator.Pages }}
+{{- $hidden := ($p.Param "cover.hiddenInList") | default ($p.Param "cover.hidden") | default false }}
+{{- if and (eq $firstCoverIndex -1) $p.Params.cover.image (not $hidden) }}{{- $firstCoverIndex = $i }}{{- end }}
+{{- end }}
 {{- range $index, $page := $paginator.Pages }}
 
 {{- $class := "post-entry" }}
@@ -63,9 +68,10 @@
 {{- $class = "post-entry tag-entry" }}
 {{- end }}
 
+{{- $isFirst := (and (eq $paginator.PageNumber 1) (eq $index $firstCoverIndex)) }}
 <article class="{{ $class }}">
   {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
-  {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
+  {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden "IsFirst" $isFirst) }}
   <header class="entry-header">
     <h2 class="entry-hint-parent">
       {{- .Title }}
