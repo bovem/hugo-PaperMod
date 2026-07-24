@@ -1,4 +1,38 @@
 {{- /* Post content custom area start */ -}}
 {{- /*     Insert any custom code after post content - it will appear after the post body, before the footer. */ -}}
 {{- /*     Can be overwritten by partial with the same name in the global layouts. */ -}}
+{{- if and .IsPage (in site.Params.mainSections .Section) }}
+<aside class="post-endnote">
+  <p class="post-endnote-lead">Thanks for reading!</p>
+  <p>If this was useful, <a href="/contents/">explore what else I write about</a> or subscribe to the <a href="https://www.avni.sh/index.xml" target="_blank" rel="noopener">RSS feed</a> so you don't miss new posts.</p>
+  <p>And if you have a question, some feedback, or just want to chat about this, I'd love to hear from you. Drop me a message at <a href="mailto:blog@avni.sh">blog@avni.sh</a>.</p>
+</aside>
+<style>
+  .post-endnote {
+    margin-top: 2.5rem;
+    padding: 1.1rem 1.3rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--entry);
+    line-height: 1.6;
+  }
+  .post-endnote p {
+    margin: 0 0 0.55rem;
+    color: var(--secondary);
+  }
+  .post-endnote p:last-child {
+    margin-bottom: 0;
+  }
+  .post-endnote .post-endnote-lead {
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: var(--primary);
+  }
+  .post-endnote a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>
+{{- end }}
 {{- /* Post content custom area end */ -}}
