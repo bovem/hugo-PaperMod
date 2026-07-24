@@ -4,14 +4,14 @@
    wins conflicts against theme defaults.
    ============================================================= */
 
-/* --- #2 · Inline code matches the (always-dark) code blocks --------
-   The theme gives inline `code` a light-grey background while fenced
-   blocks stay dark, so the two clash on a light page. Make inline
-   code a small dark chip so both read as one system. Fenced
-   `pre code` is left alone (kept dark by the theme's own rule). */
-.post-content :not(pre) > code {
-    background: var(--code-block-bg);
-    color: #e8e8e8;
+/* --- Light-theme card separation ----------------------------------
+   In light mode --entry and --theme are both pure white, so post
+   cards blend into the page (their only cue is a near-invisible
+   #eee border). Give resting cards a firmer border + soft shadow so
+   they read as distinct cards. Dark mode already has contrast. */
+:root:not([data-theme="dark"]) .post-entry {
+    border-color: #e3e3e3;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 /* --- External-link indicator --------------------------------------
