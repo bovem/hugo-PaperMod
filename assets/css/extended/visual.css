@@ -1,0 +1,29 @@
+/* =============================================================
+   visual.css — aesthetic overrides
+   Loads last among extended/*.css (alphabetical concat), so it
+   wins conflicts against theme defaults.
+   ============================================================= */
+
+/* --- #2 · Inline code matches the (always-dark) code blocks --------
+   The theme gives inline `code` a light-grey background while fenced
+   blocks stay dark, so the two clash on a light page. Make inline
+   code a small dark chip so both read as one system. Fenced
+   `pre code` is left alone (kept dark by the theme's own rule). */
+.post-content :not(pre) > code {
+    background: var(--code-block-bg);
+    color: #e8e8e8;
+}
+
+/* --- External-link indicator --------------------------------------
+   Append a small ↗ to links that leave the site, so outbound links
+   are distinguishable without relying on color. Internal links
+   (anything on avni.sh) stay clean. */
+.post-content a[href^="http"]:not([href*="avni.sh"])::after {
+    content: "\2197";          /* ↗ */
+    display: inline-block;
+    margin-inline-start: 0.15em;
+    font-size: 0.75em;
+    line-height: 1;
+    text-decoration: none;
+    color: var(--secondary);
+}
